@@ -104,6 +104,10 @@ public class ProcessContextGitMock extends ProcessContextImpl {
         throw new RuntimeException(e);
       }
     }
+    if (this.arguments.contains("branch") && this.arguments.contains("--show-current")) {
+      OutputMessage outputMessage = new OutputMessage(false, "main");
+      this.outputMessages.add(outputMessage);
+    }
     // always consider that files were changed
     if (this.arguments.contains("diff-index")) {
       exitCode = 1;
